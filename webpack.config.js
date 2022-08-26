@@ -13,7 +13,7 @@ const devServer = (isDev) => !isDev ? {} : {
   },
 };
 
-const esLintPlugin = (isDev) => isDev ? [] : [new ESLintPlugin({ extensions: ['js'] })];
+const esLintPlugin = (isDev) => isDev ? [] : [ new ESLintPlugin({ extensions: ['ts', 'js'] }) ];
 
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
@@ -27,40 +27,38 @@ module.exports = ({ development }) => ({
     assetModuleFilename: 'assets/[hash][ext]',
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: 'babel-loader',
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-      type: 'asset/resource',
-    },
-    {
-      test: /\.(woff(2)?|eot|ttf|otf)$/i,
-      type: 'asset/resource',
-    },
-    {
-      test: /\.css$/i,
-      use: [MiniCssExtractPlugin.loader, 'css-loader'],
-    },
-    {
-      test: /\.s[ac]ss$/i,
-      use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-    }
+    rules: [
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
     ],
   },
   plugins: [
     ...esLintPlugin(development),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
-    /*     new HtmlWebpackPlugin({ template: './src/components/winnersPage/winners.html',
-        filename: 'winners.html' 
-      }), */
+    new HtmlWebpackPlugin({ template: './src/index.html'}),
+    new HtmlWebpackPlugin({ template: './src/authorization/authorization.html', filename: 'authorization.html'}),
+    new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html'}),
+    new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html'}),
+    new HtmlWebpackPlugin({ template: './src/games/sprint/sprint.html', filename: 'sprint.html'}),
+    new HtmlWebpackPlugin({ template: './src/games/listening/listening.html', filename: 'listening.html'}),
     new CopyPlugin({
       patterns: [{
         from: './src/assets',
-        to: "assets",
+        to: "assets", 
         noErrorOnMissing: true,
       }],
     }),
