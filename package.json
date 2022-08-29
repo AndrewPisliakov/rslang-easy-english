@@ -1,15 +1,15 @@
 {
   "name": "rs-lang",
   "version": "1.0.0",
-  "description": "Fun with promises",
-  "main": "index.js",
+  "description": "English learning",
+  "main": "./src/index.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve --env development",
     "lint": "eslint ./src"
   },
-  "author": "mikhama",
-  "license": "MIT",
+  "author": "",
+  "license": "",
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
