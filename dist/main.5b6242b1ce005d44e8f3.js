@@ -1,1 +1,0 @@
-(()=>{"use strict";(async s=>{const o=await fetch("https://rs-easy-english.herokuapp.com/users",{method:"POST",headers:{Accept:"application/json","Content-Type":"application/json"},body:JSON.stringify({email:"hello@user.com",password:"Gfhjkm_123"})}),e=await o.json();console.log(e)})()})();
