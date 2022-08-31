@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-shadow */
 /* eslint-disable quotes */
 /* eslint-disable comma-dangle */
@@ -8,20 +9,22 @@ import './style.css';
 const inputEmail = document.querySelector('#authorizationInputEmail1');
 const inputPassword = document.querySelector('#authorizationInputPassword1');
 const form = document.querySelector('#form');
-console.log(form);
 
 const user = {
   email: '',
   password: ''
 };
 // eslint-disable-next-line prefer-arrow-callback
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', handleFormSubmit);
+
+async function handleFormSubmit(event) {
   event.preventDefault();
   // eslint-disable-next-line no-use-before-define
-  createUser(user);
+  // await createUser(user);
+  await loginUser(user);
   inputEmail.value = '';
   inputPassword.value = '';
-});
+}
 
 inputEmail.addEventListener('change', function () {
   user.email = this.value;
@@ -45,14 +48,25 @@ const createUser = async (user) => {
     },
     body: JSON.stringify(user),
   });
+  console.log(rawResponse);
+  const { status } = rawResponse;
   const content = await rawResponse.json();
   console.log(content);
-  alert('Ваши данные успешно сохранены');
+
+  if (status === 200) {
+    alert('Ваши данные дабавлены');
+  } else {
+    const arrErrors = content.error.errors;
+    let str = '';
+    // eslint-disable-next-line no-return-assign
+    arrErrors.forEach((elem) => str += `${elem.message} \n `);
+    alert(str);
+  }
 };
 
-/* export default inputEmail; */
+// createUser({ "email": "first@gmai.com", "password": "11111111" });
 
-/* async function loginUser(user) {
+const loginUser = async (user) => {
   const rawResponse = await fetch('https://rslang-easy-english-be.herokuapp.com/signin', {
     method: 'POST',
     headers: {
@@ -64,7 +78,7 @@ const createUser = async (user) => {
   const content = await rawResponse.json();
 
   console.log(content);
-}
+  console.log(content.token);
+};
 
-loginUser({ "email": "andrew@gmail.com", "password": "11111111" });
-*/
+// loginUser({ "email": "first@gmai.com", "password": "11111111" });
