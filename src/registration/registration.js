@@ -28,6 +28,7 @@ window.onload = () => {
       alert('Ваши данные дабавлены');
       makeEmptyUserValue(user);
       console.log(user);
+      window.location.href = 'index.html';
     } else {
       const arrErrors = content.error.errors;
       let str = '';
@@ -37,12 +38,11 @@ window.onload = () => {
     }
   };
 
-  // createUser({ "email": "first@gmai.com", "password": "11111111" });
-
   function handleFormRegistrationSubmit(event) {
     event.preventDefault();
     console.log(user);
-    showUser(user);
+    createUser(user);
+    // showUser(user);
     inputRegistrationName.value = '';
     inputRegistrationEmail.value = '';
     inputRegistrationPassword.value = '';
@@ -75,10 +75,4 @@ function makeEmptyUserValue(user) {
   for (const key in user) {
     user[key] = '';
   }
-}
-
-async function showUser(user) {
-  // eslint-disable-next-line no-undef
-  await createUser(user);
-  console.log(user);
 }

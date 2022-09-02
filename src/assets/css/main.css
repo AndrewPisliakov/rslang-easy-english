@@ -2405,3 +2405,7 @@ section {
   font-size: 13px;
   color: #012970;
 }
+
+.wrapper {
+  max-width: 400px;
+}

@@ -21,7 +21,8 @@ module.exports = ({ development }) => ({
   devtool: development ? 'inline-source-map' : false,
   entry: {
     main: './src/index.js',
-    registration: './src/registration/registration.js'
+    authorization: './src/authorization/authorization.js',
+    registration: './src/registration/registration.js',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -52,8 +53,8 @@ module.exports = ({ development }) => ({
     ...esLintPlugin(development),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
-    new HtmlWebpackPlugin({ template: './src/authorization/authorization.html', filename: 'authorization.html' }),
-    new HtmlWebpackPlugin({ inject: true, template: './src/registration/registration.html', filename: 'registration.html', chunks: 'registration' }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/authorization/authorization.html', filename: 'authorization.html', chunks: ['authorization'] }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/registration/registration.html', filename: 'registration.html', chunks: ['registration'] }),
     new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html' }),
     new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html' }),
     new HtmlWebpackPlugin({ template: './src/games/sprint/sprint.html', filename: 'sprint.html' }),

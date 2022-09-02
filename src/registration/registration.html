@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Easy English autorization</title>
+  <title>Easy English registration</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,7 +42,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="../assets/img/logo.png" alt="">
         <span>Easy English</span>
       </a>
 
@@ -57,27 +57,31 @@
 
         <ol>
           <li><a href="index.html">Home</a></li>
-          <li>authorization</li>
+          <li>registration</li>
         </ol>
-        <h2>Страница авторизации</h2>
+        <h2>Страница регистрации</h2>
       </div>
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
       <div class="container">
-        <div>Если у вас нет учетной записи, зарегистрируйтесь</div>
-        <a href="registration.html"><button type="submit" class="btn btn-primary mb-3 mt-3">Регистрация</button></a>
         <div class="wrapper">
-          <form id="form">
+          <form id="formRegistration">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="authorizationInputEmail1" aria-describedby="emailHelp">
+                <label for="registrationInputName" class="form-label">Name</label>
+                <input type="input" class="form-control" id="registrationInputName" aria-describedby="emailHelp">
+              </div>
+            <div class="mb-3">
+              <label for="registrationInputEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="registrationInputEmail" aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="authorizationInputPassword1">
+              <label for="registrationInputPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="registrationInputPassword">
+              <div id="emailHelp" class="form-text">at least 8 characters</div>
             </div>
+            <!-- <a class="getstarted scrollto" href="authorization.html">Вход</a> -->
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
@@ -90,16 +94,17 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/assets/vendor/aos/aos.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
 
 </body>
 
