@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1024px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#header {
+  height: 60px;
+  background-color: #DCDCDC;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.logo span {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
+  margin-top: 3px;
+}
+
+#main {
+  height: calc(100vh - 120px);
+}
+
+.screen {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.screen1 {
+  background-color: #66CDAA;
+}
+
+.screen1 p {
+  font-size: 22px;
+  font-weight: 400;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.button-set {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  border: solid 2px #012970;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: 400;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+  cursor: pointer;
+}
+
+.button-1 {
+  background-color: #32CD32;
+}
+
+.button-2 {
+  background-color: #ADFF2F;
+}
+
+.button-3 {
+  background-color: #FFFF00;
+}
+
+.button-4 {
+  background-color: #FFA500;
+}
+
+.button-5 {
+  background-color: #FF6347;
+}
+
+.button-6 {
+  background-color: #FF0000;
+}
+
+.screen2 {
+  justify-content: space-around;
+  background-color: #00FFFF;
+}
+
+.timer {
+  width: 70px;
+  height: 50px;
+  border: solid 4px #012970;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+  line-height: 1.5;
+}
+
+.success-line {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.success-sign {
+  margin: 2px;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #012970;
+  border-radius: 8px;
+}
+
+.word-span {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+}
+
+.translation-span {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+}
+
+.choice {
+  width: 260px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.choice-button {
+  width: 120px;
+  height: 40px;
+  border: solid 2px #012970;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+  cursor: pointer;
+}
+
+.right-button {
+  background-color: #32CD32;
+}
+
+.wrong-button {
+  background-color: #FF6347;
+}
+
+.screen3 {
+  justify-content: space-around;
+  background-color: #9370DB;
+}
+
+.success-line-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.results-list {
+  width: 50%;
+  height: 60%;
+  overflow-y: scroll;
+  background-color: #FFFFFF;
+}
+
+.end-buttons-box {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.end-button {
+  width: 180px;
+  height: 40px;
+  background-color: #32CD32;
+  border: solid 2px #012970;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Helvetica", sans-serif;
+  color: #012970;
+  cursor: pointer;
+}
+
+#footer {
+  height: 60px;
+  margin-top: auto;
+  background-color: #DCDCDC;
+}
