@@ -4,6 +4,7 @@ const user = {
   email: '',
   password: '',
   token: '',
+  login: false,
 };
 
 export default user;

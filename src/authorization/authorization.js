@@ -12,11 +12,16 @@ window.onload = function () {
   const inputPassword = document.querySelector('#authorizationInputPassword1');
   const form = document.querySelector('#form');
 
+  const dataForloginUser = {
+    email: '',
+    password: '',
+  };
+
   const localStorageSetItem = (user) => {
     localStorage.setItem('person', JSON.stringify(user));
   };
 
-  const loginUser = async (user) => {
+  async function loginUser(user) {
     const rawResponse = await fetch('https://rslang-easy-english-be.herokuapp.com/signin', {
       method: 'POST',
       headers: {
@@ -29,25 +34,18 @@ window.onload = function () {
     if (status === 200) {
       alert('Залогировались');
       // makeEmptyUserValue(user);
-      // console.log(user);
-      window.location.href = 'index.html';
     } else {
       alert('Incorrect e-mail or password');
     }
     const content = await rawResponse.json();
-    console.log(content);
-
-    user.token = content.token;
-    user.id = content.userId;
-    user.name = content.name;
-
-    localStorageSetItem(user);
-  };
-  // loginUser({ "email": "first@gmai.com", "password": "11111111" });
+    window.onstorage = () => {};
+    localStorageSetItem(content);
+    window.location.href = 'index.html';
+  }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    loginUser(user);
+    loginUser(dataForloginUser);
     inputEmail.value = '';
     inputPassword.value = '';
   }
@@ -55,8 +53,7 @@ window.onload = function () {
   form.addEventListener('submit', handleFormSubmit);
 
   inputEmail.addEventListener('change', function () {
-    user.email = this.value;
-    console.log(this.value);
+    dataForloginUser.email = this.value;
   });
 
   inputPassword.addEventListener('change', function () {
@@ -64,7 +61,6 @@ window.onload = function () {
       alert('введите 8-ми значный код!');
       return;
     }
-    user.password = this.value;
-    console.log(this.value);
+    dataForloginUser.password = this.value;
   });
 };
