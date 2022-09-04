@@ -3,28 +3,25 @@ const main = document.getElementById('main');
 const screen1 = document.createElement('section');
 const description = document.createElement('p');
 const descriptionText = `
-  Добро пожаловать в игру 'Sprint' !
-  За 60 секунд Вам будет предложено
-  до 20 слов с вариантом перевода.
-  Ваша задача - определить,
-  является ли перевод верным.
+  Добро пожаловать в игру 'AudioCall' !
+  Вам будет последовательно предложено прослушать 20 слов
+  с пятью вариантоми перевода для каждого.
+  Ваша задача - выбрать правильный вариант перевода.
   Для старта игры выберите уровень сложности,
   нажав одну из кнопок ниже.
-  После нажатия сразу запустится таймер
-  и появится первое слово.
   Поехали!
   `;
 const buttonSet = document.createElement('div');
 const screen2 = document.createElement('section');
-const timer = document.createElement('div');
+// const timer = document.createElement('div');
 const successLine = document.createElement('div');
-const wordSpan = document.createElement('span');
-const translationSpan = document.createElement('span');
-const choiceButtons = document.createElement('div');
-const rightButton = document.createElement('button');
-const wrongButton = document.createElement('button');
-const rightAnswerSound = document.createElement('audio');
-const wrongAnswerSound = document.createElement('audio');
+// const wordSpan = document.createElement('span');
+// const translationSpan = document.createElement('span');
+// const choiceButtons = document.createElement('div');
+// const rightButton = document.createElement('button');
+// const wrongButton = document.createElement('button');
+// const rightAnswerSound = document.createElement('audio');
+// const wrongAnswerSound = document.createElement('audio');
 const screen3 = document.createElement('section');
 const successLineBox = document.createElement('div');
 const results = document.createElement('div');
@@ -40,8 +37,7 @@ const exitButton = document.createElement('button');
 let difficulty;
 const words = [];
 const translations = [];
-const audioURLs = [];
-let time = 60;
+
 let count = -1;
 let answer;
 let rightAnswersNumber = 0;
@@ -54,14 +50,8 @@ async function getPage() {
   return data;
 }
 
-// function playAudio(url) {
-//   const audio = new Audio();
-//   audio.src = `https://rslang-easy-english-be.herokuapp.com/${url}`;
-//   audio.play();
-// }
-
 function finish() {
-  time = 0;
+  
   screen2.style.display = 'none';
   screen3.style.display = 'flex';
   successLineBox.append(successLine);
@@ -96,25 +86,12 @@ function pressRightButton() {
   successSign.classList.add('success-sign');
   successLine.append(successSign);
   const tableRow = document.createElement('tr');
-  const firstCell = document.createElement('td');
-  const playButton = document.createElement('button');
-  playButton.classList.add('audio-play-button');
-  const playButtonImg = document.createElement('img');
-  playButtonImg.src = './assets/audio.svg';
-  playButton.append(playButtonImg);
-  const url = audioURLs[count];
-  playButton.addEventListener('click', () => {
-    const audio = new Audio();
-    audio.src = `https://rslang-easy-english-be.herokuapp.com/${url}`;
-    audio.play();
-    // playAudio(audioURLs[count]);
-  });
-  firstCell.append(playButton);
-  const secondCell = document.createElement('td');
-  secondCell.innerText = words[count];
-  const thirdCell = document.createElement('td');
-  thirdCell.innerText = translations[count];
-  tableRow.append(firstCell, secondCell, thirdCell);
+  tableRow.innerHTML = `
+    <tr>
+      <td>${words[count]}</td>
+      <td>${translations[count]}</td>
+    </tr>
+  `;
   if (answer) {
     rightAnswerSound.play();
     rightAnswersNumber++;
@@ -134,25 +111,12 @@ function pressWrongButton() {
   successSign.classList.add('success-sign');
   successLine.append(successSign);
   const tableRow = document.createElement('tr');
-  const firstCell = document.createElement('td');
-  const playButton = document.createElement('button');
-  playButton.classList.add('audio-play-button');
-  const playButtonImg = document.createElement('img');
-  playButtonImg.src = './assets/audio.svg';
-  playButton.append(playButtonImg);
-  const url = audioURLs[count];
-  playButton.addEventListener('click', () => {
-    const audio = new Audio();
-    audio.src = `https://rslang-easy-english-be.herokuapp.com/${url}`;
-    audio.play();
-    // playAudio(audioURLs[count]);
-  });
-  firstCell.append(playButton);
-  const secondCell = document.createElement('td');
-  secondCell.innerText = words[count];
-  const thirdCell = document.createElement('td');
-  thirdCell.innerText = translations[count];
-  tableRow.append(firstCell, secondCell, thirdCell);
+  tableRow.innerHTML = `
+    <tr>
+      <td>${words[count]}</td>
+      <td>${translations[count]}</td>
+    </tr>
+  `;
   if (answer) {
     wrongAnswerSound.play();
     wrongAnswersNumber++;
@@ -172,19 +136,7 @@ async function play() {
   data.forEach((item) => {
     words.push(item.word);
     translations.push(item.wordTranslate);
-    audioURLs.push(item.audio);
   });
-  timer.innerText = time;
-  const countDown = setInterval(() => {
-    time--;
-    timer.innerText = time;
-    if (time <= 0) {
-      clearInterval(countDown);
-      if (count < 20) {
-        finish();
-      }
-    }
-  }, 1000);
   toNextWord();
 }
 
@@ -218,21 +170,21 @@ levels.forEach((item) => {
 });
 screen1.append(description, buttonSet);
 screen2.classList.add('screen', 'screen2');
-timer.classList.add('timer');
+// timer.classList.add('timer');
 successLine.classList.add('success-line');
-wordSpan.classList.add('word-span');
-translationSpan.classList.add('translation-span');
-choiceButtons.classList.add('choice');
-rightButton.innerText = 'ВЕРНО';
-rightButton.classList.add('choice-button', 'right-button');
-rightButton.addEventListener('click', pressRightButton);
-wrongButton.innerText = 'НЕВЕРНО';
-wrongButton.classList.add('choice-button', 'wrong-button');
-wrongButton.addEventListener('click', pressWrongButton);
-rightAnswerSound.setAttribute('src', './assets/sounds/rightanswer.mp3');
-wrongAnswerSound.setAttribute('src', './assets/sounds/wronganswer.mp3');
-choiceButtons.append(rightButton, wrongButton);
-screen2.append(timer, successLine, wordSpan, translationSpan, choiceButtons);
+// wordSpan.classList.add('word-span');
+// translationSpan.classList.add('translation-span');
+// choiceButtons.classList.add('choice');
+// rightButton.innerText = 'ВЕРНО';
+// rightButton.classList.add('choice-button', 'right-button');
+// rightButton.addEventListener('click', pressRightButton);
+// wrongButton.innerText = 'НЕВЕРНО';
+// wrongButton.classList.add('choice-button', 'wrong-button');
+// wrongButton.addEventListener('click', pressWrongButton);
+// rightAnswerSound.setAttribute('src', './assets/sounds/rightanswer.mp3');
+// wrongAnswerSound.setAttribute('src', './assets/sounds/wronganswer.mp3');
+// choiceButtons.append(rightButton, wrongButton);
+// screen2.append(timer, successLine, wordSpan, translationSpan, choiceButtons);
 screen3.classList.add('screen', 'screen3');
 successLineBox.classList.add('success-line-box');
 rightAnswersTableTitle.innerText = 'Я знаю ';
