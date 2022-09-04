@@ -24,6 +24,7 @@ module.exports = ({ development }) => ({
     authorization: './src/authorization/authorization.js',
     registration: './src/registration/registration.js',
     textbook: './src/textbook/textbook.js',
+    difficultWords: './src/textbook/difficultWords/difficultWords.js',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -59,7 +60,6 @@ module.exports = ({ development }) => ({
     new HtmlWebpackPlugin({ inject: true, template: './src/textbook/textbook.html', filename: 'textbook.html', chunks: ['textbook'] }),
    
     new HtmlWebpackPlugin({ inject: true, template: './src/textbook/difficultWords/difficultWords.html', filename: 'difficultWords.html', chunks: ['difficultWords'] }),
-
 
     new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html' }),
     new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html' }),
