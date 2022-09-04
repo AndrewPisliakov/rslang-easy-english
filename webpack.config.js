@@ -23,6 +23,7 @@ module.exports = ({ development }) => ({
     main: './src/index.js',
     authorization: './src/authorization/authorization.js',
     registration: './src/registration/registration.js',
+    textbook: './src/textbook/textbook.js',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -55,9 +56,11 @@ module.exports = ({ development }) => ({
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new HtmlWebpackPlugin({ inject: true, template: './src/authorization/authorization.html', filename: 'authorization.html', chunks: ['authorization'] }),
     new HtmlWebpackPlugin({ inject: true, template: './src/registration/registration.html', filename: 'registration.html', chunks: ['registration'] }),
-   
     new HtmlWebpackPlugin({ inject: true, template: './src/textbook/textbook.html', filename: 'textbook.html', chunks: ['textbook'] }),
    
+    new HtmlWebpackPlugin({ inject: true, template: './src/textbook/difficultWords/difficultWords.html', filename: 'difficultWords.html', chunks: ['difficultWords'] }),
+
+
     new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html' }),
     new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html' }),
     new HtmlWebpackPlugin({ template: './src/games/sprint/sprint.html', filename: 'sprint.html' }),
