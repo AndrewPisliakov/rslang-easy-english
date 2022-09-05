@@ -1,4 +1,3 @@
-
 window.onload = function () {
   const inputEmail = document.querySelector('#authorizationInputEmail1');
   const inputPassword = document.querySelector('#authorizationInputPassword1');
@@ -17,10 +16,11 @@ window.onload = function () {
     const rawResponse = await fetch('https://rslang-easy-english-be.herokuapp.com/signin', {
       method: 'POST',
       headers: {
+        // eslint-disable-next-line quote-props
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
     const { status } = await rawResponse;
     if (status === 200) {

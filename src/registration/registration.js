@@ -25,9 +25,10 @@ window.onload = () => {
 
     if (status === 200) {
       alert('Ваши данные дабавлены');
+      // eslint-disable-next-line no-use-before-define
       makeUserEmptyValue(dataForCreateUser);
       console.log(dataForCreateUser);
-      window.location.href = '../authorization.html';
+      window.location.href = '../authorization/authorization.html';
     } else {
       const arrErrors = content.error.errors;
       let str = '';
