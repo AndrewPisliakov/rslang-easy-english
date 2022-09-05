@@ -15,6 +15,9 @@ body {
 #header {
   height: 60px;
   background-color: #DCDCDC;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -187,11 +190,32 @@ body {
   background-color: #FFFFFF;
 }
 
+.right-answer-span {
+  display: inline-block;
+  width: 30px;
+  border-radius: 5px;
+  background-color: #32CD32;
+  text-align: center;
+}
+
+.wrong-answer-span {
+  display: inline-block;
+  width: 30px;
+  border-radius: 5px;
+  background-color: #FF6347;
+  text-align: center;
+}
+
+.second-sell {
+  width: 120px;
+}
+
 .audio-play-button {
   width: 30px;
   height: 30px;
   border: 0px;
   background-color: #FFFFFF;
+  cursor: pointer;
 }
 
 .audio-play-button img {
@@ -223,6 +247,8 @@ body {
   height: 60px;
   margin-top: auto;
   background-color: #DCDCDC;
+  display: flex;
+  align-items: center;
 }
 
 .rss-link {

@@ -26,7 +26,8 @@ const wrongButton = document.createElement('button');
 const rightAnswerSound = document.createElement('audio');
 const wrongAnswerSound = document.createElement('audio');
 const screen3 = document.createElement('section');
-const successLineBox = document.createElement('div');
+const successLineBox2 = document.createElement('div');
+const successLineBox3 = document.createElement('div');
 const results = document.createElement('div');
 const rightAnswersTableTitle = document.createElement('h3');
 const rightAnswersTable = document.createElement('table');
@@ -64,11 +65,13 @@ function finish() {
   time = 0;
   screen2.style.display = 'none';
   screen3.style.display = 'flex';
-  successLineBox.append(successLine);
+  successLineBox3.append(successLine);
   const rightAnswersSpan = document.createElement('span');
+  rightAnswersSpan.classList.add('right-answer-span');
   rightAnswersSpan.innerText = rightAnswersNumber;
   rightAnswersTableTitle.append(rightAnswersSpan);
   const wrongAnswersSpan = document.createElement('span');
+  wrongAnswersSpan.classList.add('wrong-answer-span');
   wrongAnswersSpan.innerText = wrongAnswersNumber;
   wrongAnswersTableTitle.append(wrongAnswersSpan);
 }
@@ -107,10 +110,10 @@ function pressRightButton() {
     const audio = new Audio();
     audio.src = `https://rslang-easy-english-be.herokuapp.com/${url}`;
     audio.play();
-    // playAudio(audioURLs[count]);
   });
   firstCell.append(playButton);
   const secondCell = document.createElement('td');
+  secondCell.classList.add('second-sell');
   secondCell.innerText = words[count];
   const thirdCell = document.createElement('td');
   thirdCell.innerText = translations[count];
@@ -145,7 +148,6 @@ function pressWrongButton() {
     const audio = new Audio();
     audio.src = `https://rslang-easy-english-be.herokuapp.com/${url}`;
     audio.play();
-    // playAudio(audioURLs[count]);
   });
   firstCell.append(playButton);
   const secondCell = document.createElement('td');
@@ -191,13 +193,22 @@ async function play() {
 function clear() {
   words.length = 0;
   translations.length = 0;
+  audioURLs.length = 0;
   count = -1;
   rightAnswersNumber = 0;
   wrongAnswersNumber = 0;
+  rightAnswersTableTitle.removeChild(rightAnswersTableTitle.lastChild);
+  wrongAnswersTableTitle.removeChild(wrongAnswersTableTitle.lastChild);
   while (successLine.firstChild) {
     successLine.removeChild(successLine.firstChild);
   }
-  successLineBox.removeChild(successLineBox.firstChild);
+  while (rightAnswersTable.firstChild) {
+    rightAnswersTable.removeChild(rightAnswersTable.firstChild);
+  }
+  while (wrongAnswersTable.firstChild) {
+    wrongAnswersTable.removeChild(wrongAnswersTable.firstChild);
+  }
+  successLineBox2.append(successLine);
   time = 60;
 }
 
@@ -219,7 +230,9 @@ levels.forEach((item) => {
 screen1.append(description, buttonSet);
 screen2.classList.add('screen', 'screen2');
 timer.classList.add('timer');
+successLineBox2.classList.add('success-line-box');
 successLine.classList.add('success-line');
+successLineBox2.append(successLine);
 wordSpan.classList.add('word-span');
 translationSpan.classList.add('translation-span');
 choiceButtons.classList.add('choice');
@@ -232,10 +245,12 @@ wrongButton.addEventListener('click', pressWrongButton);
 rightAnswerSound.setAttribute('src', './assets/sounds/rightanswer.mp3');
 wrongAnswerSound.setAttribute('src', './assets/sounds/wronganswer.mp3');
 choiceButtons.append(rightButton, wrongButton);
-screen2.append(timer, successLine, wordSpan, translationSpan, choiceButtons);
+screen2.append(timer, successLineBox2, wordSpan, translationSpan, choiceButtons);
 screen3.classList.add('screen', 'screen3');
-successLineBox.classList.add('success-line-box');
+successLineBox3.classList.add('success-line-box');
+rightAnswersTableTitle.classList.add('result-list-header');
 rightAnswersTableTitle.innerText = 'Я знаю ';
+wrongAnswersTableTitle.classList.add('result-list-header');
 wrongAnswersTableTitle.innerText = 'Я не знаю ';
 results.classList.add('results-list');
 results.append(rightAnswersTableTitle, rightAnswersTable, wrongAnswersTableTitle, wrongAnswersTable);
@@ -253,7 +268,7 @@ exitButton.innerText = 'НА ГЛАВНУЮ';
 linkToMain.href = '../../index.html';
 linkToMain.append(exitButton);
 endButtons.append(playAgainButton, linkToMain);
-screen3.append(successLineBox, results, endButtons);
+screen3.append(successLineBox3, results, endButtons);
 
 screen1.style.display = 'flex';
 screen2.style.display = 'none';
