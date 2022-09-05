@@ -58,8 +58,10 @@ module.exports = ({ development }) => ({
     new HtmlWebpackPlugin({ inject: true, template: './src/authorization/authorization.html', filename: 'authorization.html', chunks: ['authorization'] }),
     new HtmlWebpackPlugin({ inject: true, template: './src/registration/registration.html', filename: 'registration.html', chunks: ['registration'] }),
     new HtmlWebpackPlugin({ inject: true, template: './src/textbook/textbook.html', filename: 'textbook.html', chunks: ['textbook'] }),
-   
     new HtmlWebpackPlugin({ inject: true, template: './src/textbook/difficultWords/difficultWords.html', filename: 'difficultWords.html', chunks: ['difficultWords'] }),
+
+    new HtmlWebpackPlugin({ inject: true, template: './src/games/games.html', filename: 'games.html', chunks: ['games'] }),
+
 
     new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html' }),
     new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html' }),
