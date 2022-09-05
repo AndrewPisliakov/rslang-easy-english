@@ -30,7 +30,8 @@
       {
         "props": false
       }
-    ]
+    ],
+    "linebreak-style": ["error", "windows"]
   },
   "ignorePatterns": ["*config.js"]
 }
