@@ -2,8 +2,8 @@
 
 const buttonLogIn = document.querySelector('#buttonLogIn');
 const buttonLogOut = document.querySelector('#buttonLogOut');
-const unauthorizedDifficultWords = document.querySelector('#unauthorizedDifficultWords');
-const difficultWords = document.querySelector('#difficultWords');
+const unauthorized = document.querySelector('#unauthorized');
+const authorized = document.querySelector('#authorized');
 
 const person = JSON.parse(localStorage.getItem('person'));
 
@@ -12,11 +12,13 @@ function toggleLogInButton() {
     buttonLogIn.style.display = 'none';
     buttonLogOut.style.display = 'block';
     buttonLogOut.innerHTML = person.name;
+    unauthorized.style.display = 'none';
+    authorized.style.display = 'block';
   } else {
     buttonLogOut.style.display = 'none';
     buttonLogIn.style.display = 'block';
-    unauthorizedDifficultWords.style.display = 'block';
-    difficultWords.style.display = 'none';
+    unauthorized.style.display = 'block';
+    authorized.style.display = 'none';
   }
 }
 
