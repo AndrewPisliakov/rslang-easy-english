@@ -1,11 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-shadow */
-/* eslint-disable quotes */
-/* eslint-disable comma-dangle */
-/* eslint-disable quote-props */
-import user from '../state/state_user';
 
 window.onload = function () {
   const inputEmail = document.querySelector('#authorizationInputEmail1');
@@ -38,9 +30,9 @@ window.onload = function () {
       alert('Incorrect e-mail or password');
     }
     const content = await rawResponse.json();
-    window.onstorage = () => {};
+    window.onstorage = () => { };
     localStorageSetItem(content);
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
   }
 
   function handleFormSubmit(event) {

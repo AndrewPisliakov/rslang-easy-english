@@ -1,9 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-shadow */
-
-import user from '../state/state_user';
-
 window.onload = () => {
   const inputRegistrationName = document.querySelector('#registrationInputName');
   const inputRegistrationEmail = document.querySelector('#registrationInputEmail');
@@ -33,7 +27,7 @@ window.onload = () => {
       alert('Ваши данные дабавлены');
       makeUserEmptyValue(dataForCreateUser);
       console.log(dataForCreateUser);
-      window.location.href = 'authorization.html';
+      window.location.href = '../authorization.html';
     } else {
       const arrErrors = content.error.errors;
       let str = '';
