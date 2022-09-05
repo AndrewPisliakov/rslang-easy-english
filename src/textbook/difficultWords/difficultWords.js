@@ -1,14 +1,11 @@
 /* eslint-disable no-unused-vars */
-import './style.css';
-import user from './state/state_user';
 
 const buttonLogIn = document.querySelector('#buttonLogIn');
 const buttonLogOut = document.querySelector('#buttonLogOut');
+const unauthorizedDifficultWords = document.querySelector('#unauthorizedDifficultWords');
+const difficultWords = document.querySelector('#difficultWords');
 
 const person = JSON.parse(localStorage.getItem('person'));
-// console.log(person);
-
-// buttonLogOut.innerHTML = person.name;
 
 function toggleLogInButton() {
   if (person) {
@@ -18,6 +15,8 @@ function toggleLogInButton() {
   } else {
     buttonLogOut.style.display = 'none';
     buttonLogIn.style.display = 'block';
+    unauthorizedDifficultWords.style.display = 'block';
+    difficultWords.style.display = 'none';
   }
 }
 

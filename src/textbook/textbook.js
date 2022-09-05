@@ -1,14 +1,10 @@
 /* eslint-disable no-unused-vars */
-import './style.css';
-import user from './state/state_user';
 
 const buttonLogIn = document.querySelector('#buttonLogIn');
 const buttonLogOut = document.querySelector('#buttonLogOut');
 
 const person = JSON.parse(localStorage.getItem('person'));
-// console.log(person);
-
-// buttonLogOut.innerHTML = person.name;
+console.log(person);
 
 function toggleLogInButton() {
   if (person) {

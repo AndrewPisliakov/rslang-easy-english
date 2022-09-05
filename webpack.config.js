@@ -13,13 +13,19 @@ const devServer = (isDev) => !isDev ? {} : {
   },
 };
 
-const esLintPlugin = (isDev) => isDev ? [] : [ new ESLintPlugin({ extensions: ['ts', 'js'] }) ];
+const esLintPlugin = (isDev) => isDev ? [] : [new ESLintPlugin({ extensions: ['ts', 'js'] })];
 
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
   entry: {
     main: './src/index.js',
+    authorization: './src/authorization/authorization.js',
+    registration: './src/registration/registration.js',
+    textbook: './src/textbook/textbook.js',
+    difficultWords: './src/textbook/difficultWords/difficultWords.js',
+    games: './src/games/games.js',
+    statistics: './src/statistics/statistics.js'
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -49,16 +55,23 @@ module.exports = ({ development }) => ({
   plugins: [
     ...esLintPlugin(development),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
-    new HtmlWebpackPlugin({ template: './src/index.html'}),
-    new HtmlWebpackPlugin({ template: './src/authorization/authorization.html', filename: 'authorization.html'}),
-    new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html'}),
-    new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html'}),
-    new HtmlWebpackPlugin({ template: './src/games/sprint/sprint.html', filename: 'sprint.html'}),
-    new HtmlWebpackPlugin({ template: './src/games/listening/listening.html', filename: 'listening.html'}),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/authorization/authorization.html', filename: 'authorization.html', chunks: ['authorization'] }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/registration/registration.html', filename: 'registration.html', chunks: ['registration'] }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/textbook/textbook.html', filename: 'textbook.html', chunks: ['textbook'] }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/textbook/difficultWords/difficultWords.html', filename: 'difficultWords.html', chunks: ['difficultWords'] }),
+    new HtmlWebpackPlugin({ inject: true, template: './src/games/games.html', filename: 'games.html', chunks: ['games'] }),
+
+    new HtmlWebpackPlugin({ inject: true, template: './src/statistics/statistics.html', filename: 'statistics.html', chunks: ['statistics'] }),
+
+    new HtmlWebpackPlugin({ template: './src/games/savannah/savannah.html', filename: 'savannah.html' }),
+    new HtmlWebpackPlugin({ template: './src/games/oazis/oazis.html', filename: 'oazis.html' }),
+    new HtmlWebpackPlugin({ template: './src/games/sprint/sprint.html', filename: 'sprint.html' }),
+    new HtmlWebpackPlugin({ template: './src/games/listening/listening.html', filename: 'listening.html' }),
     new CopyPlugin({
       patterns: [{
         from: './src/assets',
-        to: "assets", 
+        to: "assets",
         noErrorOnMissing: true,
       }],
     }),
