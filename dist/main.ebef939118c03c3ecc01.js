@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=document.querySelector("#buttonLogIn"),t=document.querySelector("#buttonLogOut"),l=JSON.parse(localStorage.getItem("person"));l?(e.style.display="none",t.style.display="block",t.innerHTML=l.name):(t.style.display="none",e.style.display="block"),t.addEventListener("click",(()=>{localStorage.clear()}))})();
