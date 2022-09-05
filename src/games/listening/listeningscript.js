@@ -263,6 +263,7 @@ function dontKnow() {
     if (btn.innerText === translations[count].toUpperCase()) {
       btn.style.backgroundColor = '#32CD32';
     }
+    btn.disabled = true;
   });
   answer = false;
   pressChoiceButton();
