@@ -2395,7 +2395,6 @@ section {
 
 .footer .copyright {
   text-align: center;
-  padding-top: 30px;
   color: #012970;
 }
 
@@ -2408,4 +2407,35 @@ section {
 
 .wrapper {
   max-width: 400px;
+}
+
+.rss-link {
+  margin-left: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 160px;
+  height: 33px;
+  background-image: url(../img/rss.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.rss-year {
+  position: absolute;
+  bottom: 0;
+  right: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #012970;
+  font-weight: 900;
+  line-height: 1;
+  transition: 0.3s;
+}
+
+.rss-link:hover .rss-year {
+  right: 35px;
+  letter-spacing: 2px;
 }
