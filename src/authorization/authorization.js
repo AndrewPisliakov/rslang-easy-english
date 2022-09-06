@@ -24,7 +24,7 @@ window.onload = function () {
     });
     const { status } = await rawResponse;
     if (status === 200) {
-      alert('Залогировались');
+      alert('Авторизовались');
       // makeEmptyUserValue(user);
     } else {
       alert('Incorrect e-mail or password');
