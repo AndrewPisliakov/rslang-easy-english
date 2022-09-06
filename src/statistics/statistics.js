@@ -4,6 +4,7 @@ const buttonLogIn = document.querySelector('#buttonLogIn');
 const buttonLogOut = document.querySelector('#buttonLogOut');
 const unauthorized = document.querySelector('#unauthorized');
 const authorized = document.querySelector('#authorized');
+const footer = document.querySelector('#footer');
 
 const person = JSON.parse(localStorage.getItem('person'));
 
@@ -14,6 +15,7 @@ function toggleLogInButton() {
     buttonLogOut.innerHTML = person.name;
     unauthorized.style.display = 'none';
     authorized.style.display = 'block';
+    footer.style.display = 'block';
   } else {
     buttonLogOut.style.display = 'none';
     buttonLogIn.style.display = 'block';
