@@ -5,7 +5,6 @@ const buttonLogOut = document.querySelector('#buttonLogOut');
 const unauthorizedDifficultWords = document.querySelector('#unauthorizedDifficultWords');
 const difficultWords = document.querySelector('#difficultWords');
 const footer = document.querySelector('#footer');
-console.log(footer);
 
 const person = JSON.parse(localStorage.getItem('person'));
 
@@ -28,3 +27,9 @@ toggleLogInButton();
 buttonLogOut.addEventListener('click', () => {
   localStorage.clear();
 });
+
+const url = new URL(`${window.location.origin}/src/authorization/authorization.html`);
+const queryString = new URLSearchParams(window.location.search);
+queryString.set('returnUrl', `${window.location.toString()}`);
+url.search = queryString;
+buttonLogIn.href = url.href;
