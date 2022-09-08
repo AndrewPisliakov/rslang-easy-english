@@ -20,5 +20,3 @@ toggleLogInButton();
 buttonLogOut.addEventListener('click', () => {
   localStorage.clear();
 });
-
-console.log(window.location);

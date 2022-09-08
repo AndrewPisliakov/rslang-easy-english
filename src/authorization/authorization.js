@@ -2,6 +2,7 @@ window.onload = function () {
   const inputEmail = document.querySelector('#authorizationInputEmail1');
   const inputPassword = document.querySelector('#authorizationInputPassword1');
   const form = document.querySelector('#form');
+  const buttonRegistration = document.querySelector('#buttonRegistration');
 
   const dataForloginUser = {
     email: '',
@@ -25,6 +26,8 @@ window.onload = function () {
     const { status } = await rawResponse;
     if (status === 200) {
       alert('Авторизовались');
+      // eslint-disable-next-line no-use-before-define
+      redirectToSearch();
       // makeEmptyUserValue(user);
     } else {
       alert('Incorrect e-mail or password');
@@ -32,7 +35,6 @@ window.onload = function () {
     const content = await rawResponse.json();
     window.onstorage = () => { };
     localStorageSetItem(content);
-    window.location.href = '../index.html';
   }
 
   function handleFormSubmit(event) {
@@ -56,3 +58,17 @@ window.onload = function () {
     dataForloginUser.password = this.value;
   });
 };
+
+const url = new URL(`${window.location.origin}/src/registration/registration.html`);
+url.search = window.location.search;
+buttonRegistration.href = url.href;
+
+function redirectToSearch() {
+  if (window.location.search) {
+    const queryString = new URLSearchParams(window.location.search);
+    const redirectReferance = queryString.get('returnUrl');
+    window.location.href = redirectReferance;
+  } /* else {
+      window.location.href = `${window.location.origin}/src/index.html`;
+    } */
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 window.onload = () => {
   const inputRegistrationName = document.querySelector('#registrationInputName');
   const inputRegistrationEmail = document.querySelector('#registrationInputEmail');
@@ -28,7 +29,7 @@ window.onload = () => {
       // eslint-disable-next-line no-use-before-define
       makeUserEmptyValue(dataForCreateUser);
       console.log(dataForCreateUser);
-      window.location.href = '../authorization/authorization.html';
+      redirectToAutorization();
     } else {
       const arrErrors = content.error.errors;
       let str = '';
@@ -71,4 +72,10 @@ function makeUserEmptyValue(user) {
   for (const key in user) {
     user[key] = '';
   }
+}
+
+function redirectToAutorization() {
+  const url = new URL(`${window.location.origin}/src/authorization/authorization.html`);
+  url.search = window.location.search;
+  window.location.href = url.href;
 }
