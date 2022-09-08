@@ -75,7 +75,7 @@ function makeUserEmptyValue(user) {
 }
 
 function redirectToAutorization() {
-  const url = new URL(`${window.location.origin}/src/authorization/authorization.html`);
+  const url = new URL(`${window.location.origin}/authorization/authorization.html`);
   url.search = window.location.search;
   window.location.href = url.href;
 }

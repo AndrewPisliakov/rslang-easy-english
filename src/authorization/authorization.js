@@ -59,7 +59,7 @@ window.onload = function () {
   });
 };
 
-const url = new URL(`${window.location.origin}/src/registration/registration.html`);
+const url = new URL(`${window.location.origin}/registration/registration.html`);
 url.search = window.location.search;
 buttonRegistration.href = url.href;
 

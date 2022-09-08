@@ -30,7 +30,7 @@ buttonLogOut.addEventListener('click', () => {
   localStorage.clear();
 });
 
-const url = new URL(`${window.location.origin}/src/authorization/authorization.html`);
+const url = new URL(`${window.location.origin}/authorization/authorization.html`);
 
 const queryString = new URLSearchParams(url.search);
 queryString.set('returnUrl', `${window.location.toString()}`);
