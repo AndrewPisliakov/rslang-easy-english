@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb/base",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "no-plusplus": "off",
+    "no-console": "warn",
+    "max-len": [
+      "warn",
+      {
+        "code": 120
+      }
+    ],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "linebreak-style": ["error", "windows"]
+  },
+  "ignorePatterns": ["*config.js"]
+}
